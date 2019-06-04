@@ -52,6 +52,27 @@ function deleteUser(id, cb) {
     });
 }
 
+function admin_toggle(id, cb) {
+    connect2db();
+    Customer.findOneAndUpdate({"_id": id},{$set: {admin_is: true}}, function (err, res) {
+        if(err) {
+            console.log("Error admin" + err);
+        }
+
+        cb(err);
+    });
+}
+
+function admin_toggle_off(id, cb) {
+    connect2db();
+    Customer.findOneAndUpdate({"_id": id},{$set: {admin_is: false}}, function (err, res) {
+        if(err) {
+            console.log("Error admin" + err);
+        }
+
+        cb(err);
+    });
+}
 function getAllCustomers(cb) {
     connect2db();
     Customer.find(function(err, users) {
@@ -173,8 +194,9 @@ module.exports = {
     search_product: search_product,
     delete_product: delete_product,
     getAll_products: getAll_products,
-    getProdById: getProdById
-
+    getProdById: getProdById,
+    admin_toggle: admin_toggle,
+    admin_toggle_off: admin_toggle_off
     //addFriend: addFriend,
     //getFriendsOfUser: getFriendsOfUser,
 };

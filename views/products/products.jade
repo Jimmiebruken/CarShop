@@ -5,22 +5,25 @@ block content
     table.product_table
         tr
             th Product Name
-            th Buy Price
             th Sell Price
-            th Stock Amount
-            th Stock location
-            th Delete
+            if admin
+                th Buy Price
+                th Stock Amount
+                th Stock location
+                th Delete
         if product_list && product_list.length > 0
             each item in product_list
                 tr
                     td #{item.product_name}
-                    td #{item.price_buy}
                     td #{item.price_sell}
-                    td #{item.stock.amount}
-                    td #{item.stock.location}
-                    td.center
-                        a(href="/products/delete?id=#{item.id}")
-                            img.icon(src="/images/delete.png")
+
+                    if admin
+                        td #{item.price_buy}
+                        td #{item.stock_amount}
+                        td #{item.stock_location}
+                        td.center
+                            a(href="/products/delete?id=#{item.id}")
+                                img.icon(src="/images/delete.png")
         else
             tr
                 td(colspan=6) No records

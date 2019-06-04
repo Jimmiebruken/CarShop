@@ -9,7 +9,9 @@ block content
             th Email
             th Username
             th Year of Birth
-            th Delete
+            if admin == true
+                th Admin
+                th Delete
         if user_list && user_list.length > 0
             each user in user_list
                 tr
@@ -18,9 +20,18 @@ block content
                     td #{user.email}
                     td #{user.username}
                     td #{user.birthyear}
-                    td.center
-                        a(href="/users/delete?id=#{user.id}")
-                            img.icon(src="/images/delete.png")
+                    if admin == true
+                        if user.admin_is == false
+                            td
+                                a(href="users/admin?id=#{user.id}") Not Admin
+                        else
+                            td
+                                a(href="users/admin_off?id=#{user.id}") Admin
+
+
+                        td.center
+                            a(href="/users/delete?id=#{user.id}")
+                                img.icon(src="/images/delete.png")
         else
             tr
 

@@ -13,12 +13,12 @@ const rdl = (req, res, next) => {
 
 router.get('/', rdl, function(req, res){
     da.getUserById(req.session['userid'], function(err, u){
-
         var userid = req.session['userid'];
         res.render('dashboard', {
             title: "Dashboard for " + u.first_name,
             user: u,
             userid: userid,
+            admin: u.admin_is
 
 
         });

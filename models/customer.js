@@ -10,6 +10,7 @@ const CustomerSchema = new Schema({
     username: String,
     password: String,
     birthyear: Number,
+    admin_is: {type: Boolean, default: false}
 }, { collection: 'customer' });
 
 // Create model

@@ -7,10 +7,8 @@ const productSchema = new Schema({
     product_name: String,
     price_buy: Number,
     price_sell: Number,
-    stock: {
-        amount: Number,
-        location: String
-    },
+    stock_amount: Number,
+    stock_location: String
 
 }, { collection: 'product' });
 
