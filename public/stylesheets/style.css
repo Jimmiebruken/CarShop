@@ -94,7 +94,32 @@ a {
   width: 24px;
   height: 24px;
 }
+/* product Table */
+.product_table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
+.product_table th {
+  padding: 7px;
+  border: #4e95f4 1px solid;
+  background: darkblue;
+  color: white;
+}
+
+.product_table td {
+  padding: 7px;
+  border: #4e95f4 1px solid;
+}
+
+.product_table td.center {
+  text-align: center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
 
 .avatar-icon {
   width: 72px;
@@ -112,6 +137,17 @@ a {
 }
 
 .user_table tr:nth-child(even){
+  background: #dae5f4;
+}
+.product_table tr{
+  background: #b8d1f3;
+}
+
+.product_table tr:nth-child(odd){
+  background: #b8d1f3;
+}
+
+.product_table tr:nth-child(even){
   background: #dae5f4;
 }
 

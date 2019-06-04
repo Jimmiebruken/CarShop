@@ -1,0 +1,27 @@
+extends ../layout
+
+
+
+
+block content
+    h1 Add Product
+    form.user_input(action='/products', method='post')
+        label(for='product_name')
+            span Product Name
+            input(type='text', name='product_name', id='product_name', required='true')
+        label(for='price_buy')
+            span Purchase Price
+            input(type='text', name='price_buy', id='price_buy', required='true')
+        label(for='price_sell')
+            span Selling Price
+            input(type='text', name='price_sell', id='price_sell', required='true')
+        label(for='stock:{amount}')
+            span Stock Amount
+            input(type='text', name='stock:{amount}', id='stock:{amount}', required='true')
+        label(for='stock:{location}')
+            span Stock Location
+            input(type='text', name='stock:{location}', id='stock:{location}', required='true')
+
+        label.control-label(for='submit')
+            span
+            input(type='submit', id='submit', value='Save')
