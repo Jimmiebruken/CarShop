@@ -104,8 +104,8 @@ function search_product(pattern, cb) {
             {product_name: {$regex: pattern }},
 
         ]
-    }, function(err, product){
-        cb(err, product);
+    }, function(err, products){
+        cb(err, products);
     });
 }
 
@@ -136,43 +136,14 @@ function getProdById(prod_id, cb) {
 }
 
 
-/*
-function getFriendsOfUser(user, cb) {
-    connect2db();
-    var friends_ids = user.friends;
-    if(friends_ids.length === 0) {
-        cb([]);
-    }
-    var friends = [];
-    var count = 0;
-    friends_ids.forEach(function(id){
-        Customer.findOne({'_id': id}, function(err, friend){
-            friends.push(friend);
-            count++;
-            if(count === friends_ids.length){
-                cb(friends);
-            }
-        });
-    });
-}
-*/
+
 function getCustomerByUsername(username, cb) {
     connect2db();
     Customer.findOne({'username': username}, function(err, user){
         cb(err, user);
     });
 }
-/*
-function addFriend(userid1, userid2, cb) {
-    connect2db();
-    Customer.findOneAndUpdate({'_id': userid1}, {$push: {'friends': userid2}}, upsert=false, function(err){
-        Customer.findOneAndUpdate({'_id': userid2}, {$push: {'friends': userid1}}, upsert=false, function(err){
-            cb(err);
-        });
-    });
-}
 
-*/
 function getCustomerById(userid, cb) {
     connect2db();
     Customer.findOne({'_id': userid}, function(err, user){
@@ -197,6 +168,4 @@ module.exports = {
     getProdById: getProdById,
     admin_toggle: admin_toggle,
     admin_toggle_off: admin_toggle_off
-    //addFriend: addFriend,
-    //getFriendsOfUser: getFriendsOfUser,
 };

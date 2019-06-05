@@ -14,7 +14,7 @@ router.post('/', function(req, res){
             bcrypt.compare(req.body['password'], user.password, function(err, answer){
                 if(answer) {
                     req.session.userid = user._id;
-                    req.session.admin_is = user.admin_is
+                    req.session.admin_is = user.admin_is;
                     res.redirect('/dashboard');
                 }
                 else {

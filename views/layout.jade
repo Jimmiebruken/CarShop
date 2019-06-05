@@ -20,10 +20,11 @@ html
             a.menu(href="/") Home
             a.menu(href="/users") List Users
             a.menu(href="/users/add") Add User
+            // checks for and gives admin acces
             if admin
               a.menu(href="/products/add") Add product
-
             a.menu(href="/products") Products
+            // checks for current login session
             if userid
               a.menu(href="/dashboard") Dashboard
               a.menu(href="/logout") Logout

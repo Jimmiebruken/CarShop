@@ -5,11 +5,20 @@ var da = require('../data_access/da');
 
 /* GET product listing. */
 router.get('/', function(req, res, next) {
-  var admin = req.session['admin_is']
+  // saves is_admin to variable to send in resolution render
+  var admin = req.session['admin_is'];
+  // saves userid to variable to send in resolution render
   var userid = req.session['userid'];
+
   da.getAll_products(function(err, items) {
+    // checks if admin == true
+    console.log(admin);
+    //checks item length
+    console.log(items.length);
+    // loop to mark items with "item" tag for further use in products.jade
     items.forEach(function (item, err) {
-      res.render('products/products', {title:'Product listing','product_list': items, userid: userid, admin: admin})
+      console.log(item);
+      res.render('products/products', {title:'Product listing', product_list: items, userid: userid, admin: admin})
 
 
     })
@@ -24,7 +33,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res){
-  var admin = req.session['admin_is']
+  var admin = req.session['admin_is'];
   var userid = req.session['userid'];
   res.render('products/add', {title: 'Add Product', userid: userid, admin: admin});
 });
@@ -35,11 +44,5 @@ router.get('/delete', function(req, res){
   });
 });
 
-/*
-router.get('/add_friend', function(req, res){
-  da.addFriend(req.session['userid'], req.query.id, function(err){
-    res.redirect('/users');
-  });
-});
-*/
+
 module.exports = router;
